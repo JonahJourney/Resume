@@ -77,8 +77,12 @@ export default function RetroHero({ smoothVelocity }) {
             </p>
           </div>
 
-          {/* Narrative Bio Container */}
-          <div className="retro-paper p-6 sm:p-8 rounded-sm">
+          {/* Narrative Bio Container with Washi Tape */}
+          <div className="retro-paper p-6 sm:p-8 rounded-sm relative overflow-hidden">
+            {/* Washi Tape Strip */}
+            <div className="washi-tape washi-tape-amber -top-2.5 right-6 rotate-2 hidden sm:block" />
+            <div className="washi-tape washi-tape-blue -top-2.5 left-6 -rotate-1 hidden sm:block" />
+
             <div className="text-xs font-mono uppercase text-[#68645C] tracking-wider mb-3 flex items-center justify-between pb-2 border-b border-[#24221E]/15">
               <span>[ CANDIDATE PROFILE & NARRATIVE ]</span>
               <span>RESIDENCE: LEUVEN, BE</span>

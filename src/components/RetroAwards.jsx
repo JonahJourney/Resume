@@ -54,7 +54,11 @@ export default function RetroAwards() {
       </div>
 
       {/* Duke of Edinburgh Showcase */}
-      <div className="retro-paper p-6 sm:p-8 mb-8">
+      <div className="retro-paper p-6 sm:p-8 mb-8 relative">
+        {/* Brass Paperclip Accent */}
+        <div className="brass-paperclip hidden sm:block" />
+        <div className="washi-tape washi-tape-amber -top-2.5 right-8 rotate-1 hidden sm:block" />
+
         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-[#24221E]/15">
           <div>
             <span className="rubber-stamp rubber-stamp-amber text-[10px] mb-2">

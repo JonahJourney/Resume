@@ -21,17 +21,15 @@
   }
 }
 
-/* Retro Paper Texture & Grid */
-.bg-retro-dots {
-  background-image: radial-gradient(rgba(36, 34, 30, 0.12) 1px, transparent 1px);
-  background-size: 24px 24px;
+/* Genuine 120gsm Paper Grain Noise Texture */
+.paper-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
 }
 
-.bg-retro-grid {
-  background-size: 32px 32px;
-  background-image: 
-    linear-gradient(to right, rgba(36, 34, 30, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(36, 34, 30, 0.05) 1px, transparent 1px);
+/* Retro Paper Texture & Grid */
+.bg-retro-dots {
+  background-image: radial-gradient(rgba(36, 34, 30, 0.10) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 /* Retro tactile paper container */
@@ -40,6 +38,7 @@
   border: 1.5px solid #24221E;
   box-shadow: 4px 4px 0px #24221E;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
 }
 
 .retro-paper-hover:hover {
@@ -50,6 +49,69 @@
 .retro-paper-active:active {
   transform: translate(2px, 2px);
   box-shadow: 2px 2px 0px #24221E;
+}
+
+/* Washi-Tape Visual Accents */
+.washi-tape {
+  position: absolute;
+  height: 20px;
+  width: 90px;
+  background: rgba(229, 219, 196, 0.85);
+  backdrop-filter: blur(1px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border-left: 2px dashed rgba(36, 34, 30, 0.2);
+  border-right: 2px dashed rgba(36, 34, 30, 0.2);
+  pointer-events: none;
+  z-index: 20;
+}
+
+.washi-tape-amber {
+  background: rgba(245, 215, 145, 0.85);
+  border-left: 2px dashed rgba(184, 134, 11, 0.3);
+  border-right: 2px dashed rgba(184, 134, 11, 0.3);
+}
+
+.washi-tape-red {
+  background: rgba(235, 175, 165, 0.85);
+  border-left: 2px dashed rgba(185, 56, 38, 0.3);
+  border-right: 2px dashed rgba(185, 56, 38, 0.3);
+}
+
+.washi-tape-blue {
+  background: rgba(180, 205, 225, 0.85);
+  border-left: 2px dashed rgba(30, 78, 121, 0.3);
+  border-right: 2px dashed rgba(30, 78, 121, 0.3);
+}
+
+.washi-tape-green {
+  background: rgba(195, 225, 205, 0.85);
+  border-left: 2px dashed rgba(42, 123, 76, 0.3);
+  border-right: 2px dashed rgba(42, 123, 76, 0.3);
+}
+
+/* Brass Paperclip Accent */
+.brass-paperclip {
+  position: absolute;
+  top: -10px;
+  left: 24px;
+  width: 14px;
+  height: 32px;
+  border: 2px solid #B8860B;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.15);
+  pointer-events: none;
+  z-index: 20;
+}
+
+.brass-paperclip::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 2px;
+  right: 2px;
+  height: 20px;
+  border: 1.5px solid #8C6609;
+  border-radius: 4px 4px 0 0;
 }
 
 /* Rubber Stamp Styling */
@@ -96,38 +158,6 @@
   color: #B8860B;
   border-color: #B8860B;
   background-color: rgba(184, 134, 11, 0.04);
-}
-
-/* Typewriter blinking cursor */
-@keyframes blinkCursor {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-.animate-cursor {
-  display: inline-block;
-  width: 8px;
-  height: 1.1em;
-  background-color: #24221E;
-  vertical-align: middle;
-  margin-left: 2px;
-  animation: blinkCursor 1s step-end infinite;
-}
-
-/* Kinetic Ticker */
-@keyframes retroTicker {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.animate-retro-ticker {
-  display: flex;
-  width: max-content;
-  animation: retroTicker 35s linear infinite;
-}
-
-.animate-retro-ticker:hover {
-  animation-play-state: paused;
 }
 
 /* Tactile Link underline */

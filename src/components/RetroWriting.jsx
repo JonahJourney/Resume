@@ -20,7 +20,8 @@ export default function RetroWriting() {
       </div>
 
       {/* Essay Card */}
-      <div className="retro-paper p-5 sm:p-8 retro-paper-hover space-y-5">
+      <div className="retro-paper p-5 sm:p-8 retro-paper-hover space-y-5 relative">
+        <div className="washi-tape washi-tape-blue -top-2.5 right-10 -rotate-2 hidden sm:block" />
         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 pb-3 border-b border-[#24221E]/15">
           <div>
             <span className="rubber-stamp rubber-stamp-blue text-[10px] sm:text-[11px] mb-2">

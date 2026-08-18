@@ -20,8 +20,9 @@ function MainApp() {
 
   return (
     <div className="relative min-h-screen bg-[#F8F6F0] text-[#24221E] font-sans overflow-x-hidden pb-16 sm:pb-0">
-      {/* Subtle retro dot pattern overlay */}
+      {/* Authentic Paper Grain & Retro Dot Overlays */}
       <div className="fixed inset-0 bg-retro-dots opacity-40 pointer-events-none z-0" />
+      <div className="fixed inset-0 paper-grain pointer-events-none z-0" />
 
       {/* Koala Spirit Animal (Bamboo Climber on Desktop, Floating Widget on Mobile) */}
       <KoalaScrollCompanion scrollProgress={progress} />
