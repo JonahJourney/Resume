@@ -1,9 +1,10 @@
 import React from 'react';
 import { ExternalLink, ArrowUpRight, GraduationCap } from 'lucide-react';
-import { resumeData } from '../data/resumeData';
+import { useResumeData } from '../context/ResumeDataContext';
 
 export default function RetroEducation() {
-  const { education } = resumeData;
+  const { data, isEditMode, updateField } = useResumeData();
+  const { education } = data;
 
   return (
     <section id="education" className="py-16 px-4 sm:px-8 max-w-5xl mx-auto">
@@ -18,7 +19,7 @@ export default function RetroEducation() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {education.map((edu) => (
+        {education.map((edu, idx) => (
           <div
             key={edu.id}
             className="retro-paper p-6 sm:p-7 retro-paper-hover flex flex-col justify-between"
@@ -42,12 +43,23 @@ export default function RetroEducation() {
                 </div>
               </div>
 
-              {/* Highlights */}
+              {/* Highlights (Editable) */}
               <div className="space-y-2 mt-4 pt-3 border-t border-[#24221E]/10 font-sans text-xs text-[#24221E]">
                 {edu.highlights.map((h, i) => (
                   <div key={i} className="flex items-start gap-2">
                     <span className="font-mono text-[#2A7B4C] font-bold">↳</span>
-                    <span className="leading-relaxed">{h}</span>
+                    <span
+                      contentEditable={isEditMode}
+                      suppressContentEditableWarning={true}
+                      onBlur={(e) => updateField(`education.${idx}.highlights.${i}`, e.currentTarget.innerText)}
+                      className={`leading-relaxed transition-all ${
+                        isEditMode
+                          ? 'outline-dashed outline-1 outline-[#2A7B4C] bg-[#FDF8EE] px-1 rounded cursor-text'
+                          : ''
+                      }`}
+                    >
+                      {h}
+                    </span>
                   </div>
                 ))}
               </div>

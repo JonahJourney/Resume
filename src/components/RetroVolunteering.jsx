@@ -1,9 +1,10 @@
 import React from 'react';
 import { HeartHandshake, Check, ArrowUpRight, ShieldCheck } from 'lucide-react';
-import { resumeData } from '../data/resumeData';
+import { useResumeData } from '../context/ResumeDataContext';
 
 export default function RetroVolunteering() {
-  const { volunteering } = resumeData;
+  const { data, isEditMode, updateField } = useResumeData();
+  const { volunteering } = data;
 
   return (
     <section id="volunteering" className="py-16 px-4 sm:px-8 max-w-5xl mx-auto">
@@ -22,7 +23,7 @@ export default function RetroVolunteering() {
 
       {/* Grid of timeline entries */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {volunteering.map((item) => (
+        {volunteering.map((item, idx) => (
           <div
             key={item.id}
             className="retro-paper p-6 retro-paper-hover flex flex-col justify-between"
@@ -50,7 +51,17 @@ export default function RetroVolunteering() {
                 </div>
               </div>
 
-              <p className="text-xs sm:text-sm text-[#38352F] leading-relaxed font-sans mt-2 mb-3">
+              {/* Description (Editable) */}
+              <p
+                contentEditable={isEditMode}
+                suppressContentEditableWarning={true}
+                onBlur={(e) => updateField(`volunteering.${idx}.description`, e.currentTarget.innerText)}
+                className={`text-xs sm:text-sm text-[#38352F] leading-relaxed font-sans mt-2 mb-3 transition-all ${
+                  isEditMode
+                    ? 'outline-dashed outline-2 outline-[#1E4E79] bg-[#FDF8EE] p-1.5 rounded cursor-text'
+                    : ''
+                }`}
+              >
                 {item.description}
               </p>
 
@@ -59,7 +70,18 @@ export default function RetroVolunteering() {
                 {item.achievements.map((ach, i) => (
                   <div key={i} className="flex items-start gap-1.5">
                     <span className="font-mono text-[#1E4E79] font-bold">↳</span>
-                    <span className="leading-tight">{ach}</span>
+                    <span
+                      contentEditable={isEditMode}
+                      suppressContentEditableWarning={true}
+                      onBlur={(e) => updateField(`volunteering.${idx}.achievements.${i}`, e.currentTarget.innerText)}
+                      className={`leading-tight transition-all ${
+                        isEditMode
+                          ? 'outline-dashed outline-1 outline-[#1E4E79] bg-[#FDF8EE] px-1 rounded cursor-text'
+                          : ''
+                      }`}
+                    >
+                      {ach}
+                    </span>
                   </div>
                 ))}
               </div>

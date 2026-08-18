@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Mail, Phone, MapPin, ExternalLink, Copy, Compass, Mountain, Bike, Waves, Snowflake, Sparkles } from 'lucide-react';
-import { resumeData } from '../data/resumeData';
+import { useResumeData } from '../context/ResumeDataContext';
 import { useToast } from './Toast';
 import confetti from 'canvas-confetti';
 
 export default function RetroHero({ smoothVelocity }) {
-  const { personal, stats } = resumeData;
+  const { data, isEditMode, updateField } = useResumeData();
+  const { personal, stats } = data;
   const { addToast } = useToast();
   const [scrollY, setScrollY] = useState(0);
 
@@ -30,9 +31,6 @@ export default function RetroHero({ smoothVelocity }) {
       colors: ['#B93826', '#1E4E79', '#B8860B', '#2A7B4C', '#24221E'],
     });
   };
-
-  // Dynamic stamp rotation driven by scroll position (reverses smoothly on scroll up!)
-  const stampAngle = (scrollY * 0.08) % 360;
 
   return (
     <section id="hero" className="pt-12 sm:pt-16 pb-14 px-4 sm:px-8 max-w-5xl mx-auto">
@@ -88,7 +86,17 @@ export default function RetroHero({ smoothVelocity }) {
               <span>RESIDENCE: LEUVEN, BE</span>
             </div>
 
-            <p className="text-base sm:text-lg text-[#24221E] leading-relaxed font-sans">
+            {/* Editable Bio */}
+            <p
+              contentEditable={isEditMode}
+              suppressContentEditableWarning={true}
+              onBlur={(e) => updateField('personal.bio', e.currentTarget.innerText)}
+              className={`text-base sm:text-lg text-[#24221E] leading-relaxed font-sans transition-all ${
+                isEditMode
+                  ? 'outline-dashed outline-2 outline-[#B93826] bg-[#FDF8EE] p-2 rounded cursor-text'
+                  : ''
+              }`}
+            >
               {personal.bio}
             </p>
 

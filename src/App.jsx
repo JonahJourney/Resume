@@ -1,6 +1,7 @@
 import React from 'react';
 import { useScrollVelocity } from './hooks/useScrollVelocity';
 import { ToastProvider } from './components/Toast';
+import { ResumeDataProvider } from './context/ResumeDataContext';
 import RetroHeader from './components/RetroHeader';
 import RetroHero from './components/RetroHero';
 import RetroTicker from './components/RetroTicker';
@@ -14,6 +15,7 @@ import RetroAwards from './components/RetroAwards';
 import RetroContact from './components/RetroContact';
 import KoalaScrollCompanion from './components/KoalaScrollCompanion';
 import MobileAppDock from './components/MobileAppDock';
+import SecretEditorModal from './components/SecretEditorModal';
 
 function MainApp() {
   const { velocity, smoothVelocity, progress } = useScrollVelocity();
@@ -24,7 +26,10 @@ function MainApp() {
       <div className="fixed inset-0 bg-retro-dots opacity-40 pointer-events-none z-0" />
       <div className="fixed inset-0 paper-grain pointer-events-none z-0" />
 
-      {/* Koala Spirit Animal (Bamboo Climber on Desktop, Floating Widget on Mobile) */}
+      {/* Secret Editor Toolbar & Passcode Listener (Zero visible buttons for public visitors!) */}
+      <SecretEditorModal />
+
+      {/* Koala Spirit Animal (4 Stationed Koalas along the bamboo) */}
       <KoalaScrollCompanion scrollProgress={progress} />
 
       {/* Mobile App Bottom Navigation Dock (<640px) */}
@@ -62,7 +67,9 @@ function MainApp() {
 export default function App() {
   return (
     <ToastProvider>
-      <MainApp />
+      <ResumeDataProvider>
+        <MainApp />
+      </ResumeDataProvider>
     </ToastProvider>
   );
 }

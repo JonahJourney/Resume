@@ -1,13 +1,33 @@
-import React from 'react';
-import { Mail, Printer, ArrowUpRight, Copy, FileText, Sparkles } from 'lucide-react';
+import React, { useRef } from 'react';
+import { Mail, ArrowUpRight, FileText } from 'lucide-react';
 import { useToast } from './Toast';
+import { useResumeData } from '../context/ResumeDataContext';
 
 export default function RetroHeader({ scrollProgress }) {
   const { addToast } = useToast();
+  const { isEditMode, setIsEditMode } = useResumeData();
+  const clickCountRef = useRef(0);
+  const clickTimerRef = useRef(null);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('jonah.otoole@icloud.com');
     addToast('Stamped to clipboard: jonah.otoole@icloud.com');
+  };
+
+  // Secret triple-click on the FOLIO badge triggers Editor
+  const handleFolioTripleClick = () => {
+    clickCountRef.current += 1;
+    if (clickTimerRef.current) clearTimeout(clickTimerRef.current);
+
+    if (clickCountRef.current >= 3) {
+      clickCountRef.current = 0;
+      // Trigger Cmd+Shift+E event
+      window.dispatchEvent(new KeyboardEvent('keydown', { key: 'e', metaKey: true, shiftKey: true }));
+    } else {
+      clickTimerRef.current = setTimeout(() => {
+        clickCountRef.current = 0;
+      }, 500);
+    }
   };
 
   return (
@@ -21,8 +41,12 @@ export default function RetroHeader({ scrollProgress }) {
       </div>
 
       <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono">
-        {/* Left: Document reference stamp */}
-        <div className="flex items-center gap-3 text-[#68645C]">
+        {/* Left: Document reference stamp with secret triple-click */}
+        <div
+          onClick={handleFolioTripleClick}
+          className="flex items-center gap-3 text-[#68645C] cursor-default"
+          title="Curriculum Vitae"
+        >
           <span className="font-bold text-[#24221E] flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-[#2A7B4C] inline-block" />
             FOLIO / JO—2026
