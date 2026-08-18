@@ -5,7 +5,7 @@ export default function RetroWriting() {
   const [showFullAbstract, setShowFullAbstract] = useState(false);
 
   return (
-    <section id="writing" className="py-14 sm:py-16 px-4 sm:px-8 max-w-5xl mx-auto">
+    <section id="writing" className="py-20 sm:py-24 px-4 sm:px-8 max-w-5xl mx-auto">
       {/* Section Header */}
       <div className="mb-6 sm:mb-8 pb-3 border-b-2 border-[#24221E]">
         <div className="text-xs font-mono font-bold tracking-widest text-[#1E4E79] uppercase">

@@ -31,7 +31,7 @@ export default function RetroContact() {
   };
 
   return (
-    <section id="contact" className="py-16 px-4 sm:px-8 max-w-5xl mx-auto">
+    <section id="contact" className="py-20 sm:py-24 px-4 sm:px-8 max-w-5xl mx-auto">
       {/* Section Header */}
       <div className="mb-8 pb-3 border-b-2 border-[#24221E]">
         <div className="text-xs font-mono font-bold tracking-widest text-[#B93826] uppercase">

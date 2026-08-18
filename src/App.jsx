@@ -4,7 +4,6 @@ import { ToastProvider } from './components/Toast';
 import { ResumeDataProvider } from './context/ResumeDataContext';
 import RetroHeader from './components/RetroHeader';
 import RetroHero from './components/RetroHero';
-import RetroTicker from './components/RetroTicker';
 import RetroExperience from './components/RetroExperience';
 import RetroVolunteering from './components/RetroVolunteering';
 import RetroEducation from './components/RetroEducation';
@@ -26,7 +25,7 @@ function MainApp() {
       <div className="fixed inset-0 bg-retro-dots opacity-40 pointer-events-none z-0" />
       <div className="fixed inset-0 paper-grain pointer-events-none z-0" />
 
-      {/* Secret Editor Toolbar & Passcode Listener (Zero visible buttons for public visitors!) */}
+      {/* Secret Editor Toolbar & Passcode Listener (Hidden from normal visitors) */}
       <SecretEditorModal />
 
       {/* Koala Spirit Animal (4 Stationed Koalas along the bamboo) */}
@@ -38,11 +37,9 @@ function MainApp() {
       {/* Retro Document Top Bar */}
       <RetroHeader scrollProgress={progress} />
 
-      {/* Main Document Content */}
-      <main className="relative z-10 px-0 sm:pr-8 md:pr-0">
+      {/* Main Document Content with generous editorial whitespace */}
+      <main className="relative z-10 px-0 sm:pr-8 md:pr-0 divide-y divide-[#24221E]/10">
         <RetroHero smoothVelocity={smoothVelocity} />
-        
-        <RetroTicker smoothVelocity={smoothVelocity} />
         
         <RetroExperience smoothVelocity={smoothVelocity} />
         

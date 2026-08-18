@@ -32,7 +32,7 @@ export default function RetroAwards() {
   };
 
   return (
-    <section id="awards" className="py-16 px-4 sm:px-8 max-w-5xl mx-auto">
+    <section id="awards" className="py-20 sm:py-24 px-4 sm:px-8 max-w-5xl mx-auto">
       {/* Section Header */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b-2 border-[#24221E] gap-4">
         <div>

@@ -33,7 +33,7 @@ export default function RetroHero({ smoothVelocity }) {
   };
 
   return (
-    <section id="hero" className="pt-12 sm:pt-16 pb-14 px-4 sm:px-8 max-w-5xl mx-auto">
+    <section id="hero" className="pt-14 sm:pt-20 pb-20 sm:pb-24 px-4 sm:px-8 max-w-5xl mx-auto">
       <div className="space-y-10">
         {/* Rubber Stamps with scroll-driven micro-rotation */}
         <div className="flex flex-wrap items-center gap-3">
