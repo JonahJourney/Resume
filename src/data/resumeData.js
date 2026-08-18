@@ -147,21 +147,6 @@ export const resumeData = {
       skills: ["IT Infrastructure", "System Administration", "Team Management", "Web Systems", "Digital Strategy"]
     },
     {
-      id: "esn-leuven-social",
-      role: "Social Activities WG Member",
-      organization: "ESN Leuven",
-      location: "Leuven, Belgium",
-      period: "01/07/2025 – 30/06/2026",
-      category: "community",
-      current: false,
-      description: "Active member of the Social Activities Working Group, designing cultural events, city tours, and social integration activities.",
-      achievements: [
-        "Created engaging social events fostering friendship and cultural exchange among hundreds of exchange students.",
-        "Facilitated logistics, marketing, and cross-board coordination."
-      ],
-      skills: ["Event Organization", "Cultural Exchange", "Public Relations", "Community Engagement"]
-    },
-    {
       id: "esn-leuven-secretary",
       role: "Secretary",
       organization: "ESN Leuven",
@@ -178,7 +163,7 @@ export const resumeData = {
     },
     {
       id: "esn-leuven-party",
-      role: "Party Coordinator",
+      role: "Social Activities & Party Coordinator",
       organization: "ESN Leuven",
       location: "Leuven, Belgium",
       period: "01/09/2023 – 30/06/2024",
@@ -190,6 +175,21 @@ export const resumeData = {
         "Generated vital revenue streams for the NGO while maintaining top safety standards."
       ],
       skills: ["Event Logistics", "Crowd Management", "Budgeting", "Ticketing", "Promotions"]
+    },
+    {
+      id: "esn-leuven-social",
+      role: "Social Activities WG Member",
+      organization: "ESN Leuven",
+      location: "Leuven, Belgium",
+      period: "01/07/2025 – 30/06/2026",
+      category: "community",
+      current: false,
+      description: "Active member of the Social Activities Working Group, designing cultural events, city tours, and social integration activities.",
+      achievements: [
+        "Created engaging social events fostering friendship and cultural exchange among hundreds of exchange students.",
+        "Facilitated logistics, marketing, and cross-board coordination."
+      ],
+      skills: ["Event Organization", "Cultural Exchange", "Public Relations", "Community Engagement"]
     }
   ],
 
