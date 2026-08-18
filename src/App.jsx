@@ -7,6 +7,7 @@ import RetroTicker from './components/RetroTicker';
 import RetroExperience from './components/RetroExperience';
 import RetroVolunteering from './components/RetroVolunteering';
 import RetroEducation from './components/RetroEducation';
+import RetroWriting from './components/RetroWriting';
 import RetroSkills from './components/RetroSkills';
 import RetroLanguages from './components/RetroLanguages';
 import RetroAwards from './components/RetroAwards';
@@ -21,14 +22,14 @@ function MainApp() {
       {/* Subtle retro dot pattern overlay */}
       <div className="fixed inset-0 bg-retro-dots opacity-40 pointer-events-none z-0" />
 
-      {/* Koala Spirit Animal Climbing Companion (advances & reverses on scroll) */}
+      {/* Koala Spirit Animal Climbing Companion */}
       <KoalaScrollCompanion scrollProgress={progress} />
 
       {/* Retro Document Top Bar */}
       <RetroHeader scrollProgress={progress} />
 
-      {/* Main Document Content */}
-      <main className="relative z-10 pr-5 sm:pr-0">
+      {/* Main Document Content with mobile side clearance */}
+      <main className="relative z-10 pr-6 sm:pr-8 md:pr-0">
         <RetroHero smoothVelocity={smoothVelocity} />
         
         <RetroTicker smoothVelocity={smoothVelocity} />
@@ -38,6 +39,8 @@ function MainApp() {
         <RetroVolunteering />
         
         <RetroEducation />
+        
+        <RetroWriting />
         
         <RetroSkills />
         
