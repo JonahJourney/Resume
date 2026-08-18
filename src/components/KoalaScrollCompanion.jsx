@@ -2,16 +2,19 @@ import React, { useState, useEffect, useRef } from 'react';
 import confetti from 'canvas-confetti';
 
 /**
- * KoalaScrollCompanion — Dual Responsive Engine
+ * KoalaScrollCompanion — Anatomically Accurate Bamboo Hugging & Climbing Companion
  * 
- * - Desktop/Tablet (>=640px): Climbs full-height bamboo stalk with 60FPS physics
- * - Mobile (<640px): Floating app companion badge with interactive tap & speech bubble, leaving 100% of mobile screen width for crisp, comfortable reading!
+ * Layering Architecture:
+ * 1. Background elements (Backpack, Ears, Back Body)
+ * 2. Bamboo Stalk & Segment Nodes
+ * 3. Front Arms & Paws physically wrapping around and clutching the stalk
+ * 4. Head, Snout, Cheeks & Leaf in mouth peering over the grip
  */
 export default function KoalaScrollCompanion({ scrollProgress }) {
   const koalaRef = useRef(null);
   const trackRef = useRef(null);
-  const leftPawRef = useRef(null);
-  const rightPawRef = useRef(null);
+  const leftArmRef = useRef(null);
+  const rightArmRef = useRef(null);
   const leftEarRef = useRef(null);
   const rightEarRef = useRef(null);
 
@@ -43,7 +46,7 @@ export default function KoalaScrollCompanion({ scrollProgress }) {
     }
   }, [scrollProgress]);
 
-  // Smooth RAF loop
+  // Smooth 60FPS RAF loop with climbing leg/arm physics
   useEffect(() => {
     let phase = 0;
 
@@ -53,14 +56,23 @@ export default function KoalaScrollCompanion({ scrollProgress }) {
         currentProgressRef.current += delta * 0.14;
 
         if (Math.abs(delta) > 0.05) {
-          phase += delta * 0.4;
-          const pawOffset = Math.sin(phase) * 6;
-          const earOffset = Math.cos(phase * 0.6) * 3;
+          phase += delta * 0.35;
+          const leftArmShift = Math.sin(phase) * 5;
+          const rightArmShift = Math.cos(phase) * 5;
+          const earWiggle = Math.sin(phase * 0.5) * 3;
 
-          if (leftPawRef.current) leftPawRef.current.style.transform = `translate3d(0, ${pawOffset}px, 0) rotate(-20deg)`;
-          if (rightPawRef.current) rightPawRef.current.style.transform = `translate3d(0, ${-pawOffset}px, 0) rotate(20deg)`;
-          if (leftEarRef.current) leftEarRef.current.style.transform = `rotate(${-earOffset}deg)`;
-          if (rightEarRef.current) rightEarRef.current.style.transform = `rotate(${earOffset}deg)`;
+          if (leftArmRef.current) {
+            leftArmRef.current.style.transform = `translate3d(0, ${leftArmShift}px, 0) rotate(${leftArmShift * 1.5}deg)`;
+          }
+          if (rightArmRef.current) {
+            rightArmRef.current.style.transform = `translate3d(0, ${-rightArmShift}px, 0) rotate(${-rightArmShift * 1.5}deg)`;
+          }
+          if (leftEarRef.current) {
+            leftEarRef.current.style.transform = `rotate(${-earWiggle}deg)`;
+          }
+          if (rightEarRef.current) {
+            rightEarRef.current.style.transform = `rotate(${earWiggle}deg)`;
+          }
         }
       }
 
@@ -185,12 +197,12 @@ export default function KoalaScrollCompanion({ scrollProgress }) {
         className={`hidden sm:flex fixed right-6 top-0 bottom-0 z-40 select-none flex-col items-center no-print ${
           isDragging ? 'cursor-grabbing' : 'cursor-pointer'
         }`}
-        style={{ width: '48px' }}
+        style={{ width: '56px' }}
         title="Interactive Scrollbar — Hold & drag Koala to scroll!"
       >
-        {/* Bamboo Stalk */}
-        <div className="absolute top-0 bottom-0 w-3 bg-[#5A8F4C] border-x-2 border-[#24221E] shadow-sm flex flex-col justify-between py-6 pointer-events-none">
-          {[...Array(12)].map((_, i) => (
+        {/* Continuous Bamboo Stalk Background Track */}
+        <div className="absolute top-0 bottom-0 w-3.5 bg-[#5A8F4C] border-x-2 border-[#24221E] shadow-sm flex flex-col justify-between py-6 pointer-events-none">
+          {[...Array(14)].map((_, i) => (
             <div key={i} className="relative w-full h-1 bg-[#3E6B32] border-y border-[#24221E]">
               {i % 2 === 0 ? (
                 <div className="absolute -left-3 -top-2 w-3.5 h-1.5 bg-[#6EA358] border border-[#24221E] rounded-full -rotate-45" />
@@ -201,14 +213,14 @@ export default function KoalaScrollCompanion({ scrollProgress }) {
           ))}
         </div>
 
-        {/* Draggable Koala Handle */}
+        {/* Draggable Koala Handle (Hugging Bamboo) */}
         <div
           ref={koalaRef}
           onMouseDown={handleMouseDown}
           className={`absolute top-0 group will-change-transform ${
             isDragging ? 'cursor-grabbing scale-105' : 'cursor-grab hover:scale-105'
           }`}
-          style={{ touchAction: 'none' }}
+          style={{ touchAction: 'none', left: '-2px' }}
         >
           {/* Speech Bubble */}
           {speech && (
@@ -233,43 +245,124 @@ export default function KoalaScrollCompanion({ scrollProgress }) {
             </div>
           )}
 
-          {/* Koala SVG */}
-          <div className="w-16 h-18 relative filter drop-shadow-md transition-transform">
-            <svg viewBox="0 0 110 110" className="w-full h-full overflow-visible">
-              <g ref={leftEarRef} style={{ transformOrigin: '30px 25px' }}>
-                <circle cx="30" cy="25" r="17" fill="#8C8880" stroke="#24221E" strokeWidth="2.5" />
-                <circle cx="30" cy="25" r="10" fill="#EAE5DC" />
+          {/* Anatomical Bamboo-Hugging Koala SVG */}
+          <div className="w-16 h-20 relative filter drop-shadow-md transition-transform">
+            <svg viewBox="0 0 110 120" className="w-full h-full overflow-visible">
+              
+              {/* LAYER 1: BEHIND BAMBOO (Backpack, Ears, Back Torso, Back Legs) */}
+              <g id="layer-behind-bamboo">
+                {/* Left Ear */}
+                <g ref={leftEarRef} style={{ transformOrigin: '28px 24px' }}>
+                  <circle cx="28" cy="24" r="16" fill="#8C8880" stroke="#24221E" strokeWidth="2.5" />
+                  <circle cx="28" cy="24" r="9.5" fill="#EAE5DC" />
+                </g>
+
+                {/* Right Ear */}
+                <g ref={rightEarRef} style={{ transformOrigin: '82px 24px' }}>
+                  <circle cx="82" cy="24" r="16" fill="#8C8880" stroke="#24221E" strokeWidth="2.5" />
+                  <circle cx="82" cy="24" r="9.5" fill="#EAE5DC" />
+                </g>
+
+                {/* Canadian Red Backpack (strapped on back) */}
+                <rect x="38" y="56" width="34" height="26" rx="5" fill="#B93826" stroke="#24221E" strokeWidth="2.5" />
+                <path d="M52 64 L58 64 M55 61 L55 69" stroke="#FDFCF7" strokeWidth="2" strokeLinecap="round" />
+
+                {/* Back Body Silhouette */}
+                <ellipse cx="55" cy="74" rx="24" ry="22" fill="#8C8880" stroke="#24221E" strokeWidth="2.5" />
+
+                {/* Back Leg / Clasp (gripping sides of stalk) */}
+                <ellipse cx="36" cy="95" rx="8" ry="10" fill="#75716A" stroke="#24221E" strokeWidth="2.5" transform="rotate(-15 36 95)" />
+                <ellipse cx="74" cy="95" rx="8" ry="10" fill="#75716A" stroke="#24221E" strokeWidth="2.5" transform="rotate(15 74 95)" />
               </g>
-              <g ref={rightEarRef} style={{ transformOrigin: '80px 25px' }}>
-                <circle cx="80" cy="25" r="17" fill="#8C8880" stroke="#24221E" strokeWidth="2.5" />
-                <circle cx="80" cy="25" r="10" fill="#EAE5DC" />
+
+              {/* LAYER 2: THE BAMBOO STALK PASSING THROUGH THE KOALA'S EMBRACE */}
+              <g id="layer-bamboo-stalk">
+                <rect x="47" y="0" width="16" height="120" fill="#5A8F4C" stroke="#24221E" strokeWidth="2.5" />
+                {/* Bamboo Stalk Highlights & Nodes */}
+                <rect x="49" y="0" width="4" height="120" fill="#78B564" opacity="0.6" />
+                <line x1="47" y1="30" x2="63" y2="30" stroke="#24221E" strokeWidth="2" />
+                <line x1="47" y1="75" x2="63" y2="75" stroke="#24221E" strokeWidth="2" />
+                <line x1="47" y1="110" x2="63" y2="110" stroke="#24221E" strokeWidth="2" />
               </g>
-              <rect x="42" y="52" width="26" height="22" rx="4" fill="#B93826" stroke="#24221E" strokeWidth="2.5" />
-              <path d="M53 58 L57 58 M55 56 L55 64" stroke="#FDFCF7" strokeWidth="2" strokeLinecap="round" />
-              <ellipse cx="55" cy="68" rx="23" ry="20" fill="#8C8880" stroke="#24221E" strokeWidth="2.5" />
-              <ellipse cx="55" cy="70" rx="14" ry="13" fill="#EAE5DC" />
-              <circle cx="55" cy="42" r="25" fill="#A19D94" stroke="#24221E" strokeWidth="2.5" />
-              <circle cx="41" cy="49" r="4" fill="#E8B4B8" opacity="0.6" />
-              <circle cx="69" cy="49" r="4" fill="#E8B4B8" opacity="0.6" />
-              <ellipse cx="55" cy="45" rx="8" ry="11" fill="#1C1B18" stroke="#24221E" strokeWidth="1.5" />
-              <ellipse cx="53" cy="41" rx="2.5" ry="3.5" fill="#504C46" opacity="0.5" />
-              <circle cx="43" cy="37" r="3.5" fill="#141311" />
-              <circle cx="42" cy="36" r="1.2" fill="#FFF" />
-              <circle cx="67" cy="37" r="3.5" fill="#141311" />
-              <circle cx="66" cy="36" r="1.2" fill="#FFF" />
-              <g transform="translate(64, 48) rotate(-15)">
-                <path d="M0 6 Q8 -2 18 -4 Q12 6 0 6" fill="#3D9960" stroke="#24221E" strokeWidth="1.5" />
+
+              {/* LAYER 3: IN FRONT OF BAMBOO (HUGGING ARMS & CLASPING PAWS) */}
+              <g id="layer-front-hugging-arms">
+                {/* Left Arm wrapping around and clutching IN FRONT of the stalk */}
+                <g ref={leftArmRef} style={{ transformOrigin: '28px 58px' }}>
+                  {/* Left Arm Curve */}
+                  <path
+                    d="M 28 56 C 24 64, 38 72, 54 68"
+                    fill="none"
+                    stroke="#8C8880"
+                    strokeWidth="14"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M 28 56 C 24 64, 38 72, 54 68"
+                    fill="none"
+                    stroke="#24221E"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                  />
+                  {/* Left Paw gripping stalk */}
+                  <circle cx="55" cy="67" r="7.5" fill="#A19D94" stroke="#24221E" strokeWidth="2" />
+                  <circle cx="57" cy="65" r="2" fill="#24221E" />
+                  <circle cx="58" cy="69" r="2" fill="#24221E" />
+                </g>
+
+                {/* Right Arm wrapping around and clutching IN FRONT of the stalk */}
+                <g ref={rightArmRef} style={{ transformOrigin: '82px 58px' }}>
+                  {/* Right Arm Curve */}
+                  <path
+                    d="M 82 56 C 86 64, 72 74, 56 72"
+                    fill="none"
+                    stroke="#8C8880"
+                    strokeWidth="14"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M 82 56 C 86 64, 72 74, 56 72"
+                    fill="none"
+                    stroke="#24221E"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                  />
+                  {/* Right Paw gripping stalk */}
+                  <circle cx="54" cy="73" r="7.5" fill="#A19D94" stroke="#24221E" strokeWidth="2" />
+                  <circle cx="52" cy="71" r="2" fill="#24221E" />
+                  <circle cx="51" cy="75" r="2" fill="#24221E" />
+                </g>
+
+                {/* Left & Right Paws Claws overlapping the stalk */}
+                <path d="M 44 94 Q 48 97 52 94" fill="#A19D94" stroke="#24221E" strokeWidth="2" />
+                <path d="M 66 94 Q 62 97 58 94" fill="#A19D94" stroke="#24221E" strokeWidth="2" />
               </g>
-              <g ref={leftPawRef} style={{ transformOrigin: '30px 58px' }}>
-                <ellipse cx="30" cy="58" rx="7" ry="10" fill="#8C8880" stroke="#24221E" strokeWidth="2.5" />
-                <circle cx="36" cy="54" r="3" fill="#24221E" />
+
+              {/* LAYER 4: HEAD, NOSE & CHEEKS (Peering directly over the bamboo) */}
+              <g id="layer-head">
+                {/* Head Circle */}
+                <circle cx="55" cy="42" r="24" fill="#A19D94" stroke="#24221E" strokeWidth="2.5" />
+
+                {/* Rosy Cheeks */}
+                <circle cx="41" cy="48" r="4.5" fill="#E8B4B8" opacity="0.65" />
+                <circle cx="69" cy="48" r="4.5" fill="#E8B4B8" opacity="0.65" />
+
+                {/* Shiny Koala Nose */}
+                <ellipse cx="55" cy="44" rx="8" ry="11" fill="#1C1B18" stroke="#24221E" strokeWidth="1.5" />
+                <ellipse cx="53" cy="40" rx="2.5" ry="3.5" fill="#504C46" opacity="0.55" />
+
+                {/* Eyes */}
+                <circle cx="43" cy="37" r="3.5" fill="#141311" />
+                <circle cx="42" cy="36" r="1.2" fill="#FFF" />
+                <circle cx="67" cy="37" r="3.5" fill="#141311" />
+                <circle cx="66" cy="36" r="1.2" fill="#FFF" />
+
+                {/* Fresh Bamboo Leaf in Mouth */}
+                <g transform="translate(64, 47) rotate(-10)">
+                  <path d="M0 6 Q9 -3 20 -4 Q13 6 0 6" fill="#3D9960" stroke="#24221E" strokeWidth="1.5" />
+                </g>
               </g>
-              <g ref={rightPawRef} style={{ transformOrigin: '80px 58px' }}>
-                <ellipse cx="80" cy="58" rx="7" ry="10" fill="#8C8880" stroke="#24221E" strokeWidth="2.5" />
-                <circle cx="74" cy="54" r="3" fill="#24221E" />
-              </g>
-              <ellipse cx="38" cy="88" rx="7" ry="8" fill="#75716A" stroke="#24221E" strokeWidth="2.5" />
-              <ellipse cx="72" cy="88" rx="7" ry="8" fill="#75716A" stroke="#24221E" strokeWidth="2.5" />
+
             </svg>
           </div>
         </div>
