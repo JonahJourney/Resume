@@ -38,7 +38,7 @@ function MainApp() {
       <RetroHeader scrollProgress={progress} />
 
       {/* Main Document Content with generous editorial whitespace */}
-      <main className="relative z-10 px-0 sm:pr-8 md:pr-0 divide-y divide-[#24221E]/10">
+      <main className="relative z-10 pr-3 sm:pr-8 md:pr-0 divide-y divide-[#24221E]/10">
         <RetroHero smoothVelocity={smoothVelocity} />
         
         <RetroExperience smoothVelocity={smoothVelocity} />

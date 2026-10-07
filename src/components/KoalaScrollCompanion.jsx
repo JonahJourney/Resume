@@ -74,15 +74,15 @@ export default function KoalaScrollCompanion() {
   };
 
   return (
-    <div className="absolute right-4 sm:right-8 top-0 bottom-0 z-30 select-none no-print pointer-events-none w-14">
+    <div className="absolute right-0 sm:right-6 md:right-8 top-0 bottom-0 z-30 select-none no-print pointer-events-none w-10 sm:w-14">
       {/* Continuous Bamboo Stalk running down the entire page length */}
-      <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-3.5 bg-[#5A8F4C] border-x-2 border-[#24221E] shadow-sm flex flex-col justify-between py-12">
+      <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-2.5 sm:w-3.5 bg-[#5A8F4C] border-x-2 border-[#24221E] shadow-sm flex flex-col justify-between py-12">
         {[...Array(40)].map((_, i) => (
           <div key={i} className="relative w-full h-1 bg-[#3E6B32] border-y border-[#24221E]">
             {i % 2 === 0 ? (
-              <div className="absolute -left-3 -top-2 w-3.5 h-1.5 bg-[#6EA358] border border-[#24221E] rounded-full -rotate-45" />
+              <div className="absolute -left-2.5 sm:-left-3 -top-1.5 sm:-top-2 w-2.5 sm:w-3.5 h-1.5 bg-[#6EA358] border border-[#24221E] rounded-full -rotate-45" />
             ) : (
-              <div className="absolute -right-3 -top-2 w-3.5 h-1.5 bg-[#6EA358] border border-[#24221E] rounded-full rotate-45" />
+              <div className="absolute -right-2.5 sm:-right-3 -top-1.5 sm:-top-2 w-2.5 sm:w-3.5 h-1.5 bg-[#6EA358] border border-[#24221E] rounded-full rotate-45" />
             )}
           </div>
         ))}
@@ -98,7 +98,7 @@ export default function KoalaScrollCompanion() {
         >
           {/* Speech Bubble on Hover or Click */}
           <div
-            className={`absolute right-16 top-1/2 -translate-y-1/2 w-56 sm:w-64 p-3.5 bg-[#FDFCF7] border-2 border-[#24221E] shadow-retro text-xs font-mono rounded-xs z-50 transition-all duration-200 ${
+            className={`absolute right-11 sm:right-16 top-1/2 -translate-y-1/2 w-56 sm:w-64 max-w-[calc(100vw-3.2rem)] p-3 sm:p-3.5 bg-[#FDFCF7] border-2 border-[#24221E] shadow-retro text-xs font-mono rounded-xs z-50 transition-all duration-200 ${
               activeKoala === k.id
                 ? 'opacity-100 scale-100 pointer-events-auto'
                 : 'opacity-0 scale-95 pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto'
@@ -106,25 +106,25 @@ export default function KoalaScrollCompanion() {
           >
             {/* Speech Header */}
             <div className="flex items-center justify-between pb-1.5 mb-1.5 border-b border-[#24221E]/15">
-              <span className="font-bold text-[11px]" style={{ color: k.accentColor }}>
+              <span className="font-bold text-[10px] sm:text-[11px]" style={{ color: k.accentColor }}>
                 {k.badge} // {k.title}
               </span>
-              <span className="text-[9px] text-[#68645C] font-semibold">{k.subtitle}</span>
+              <span className="text-[8px] sm:text-[9px] text-[#68645C] font-semibold">{k.subtitle}</span>
             </div>
 
             {/* Bubble Content */}
-            <p className="text-[#38352F] leading-snug font-sans text-xs">
+            <p className="text-[#38352F] leading-snug font-sans text-[11px] sm:text-xs">
               {k.bubble}
             </p>
 
-            <div className="mt-2 pt-1.5 border-t border-[#24221E]/10 flex items-center justify-between text-[10px] text-[#68645C]">
+            <div className="mt-2 pt-1.5 border-t border-[#24221E]/10 flex items-center justify-between text-[9px] sm:text-[10px] text-[#68645C]">
               <span>🎋 Tap for confetti!</span>
               <span className="text-[#2A7B4C] font-bold">STATIONED KOALA</span>
             </div>
           </div>
 
           {/* Koala Vector Illustration hugging the bamboo */}
-          <div className="w-16 h-20 relative filter drop-shadow-md hover:scale-110 active:scale-95 transition-transform">
+          <div className="w-12 h-16 sm:w-16 sm:h-20 relative filter drop-shadow-md hover:scale-110 active:scale-95 transition-transform">
             <svg viewBox="0 0 110 120" className="w-full h-full overflow-visible">
               {/* LAYER 1: BEHIND BAMBOO */}
               <g id="layer-behind">
