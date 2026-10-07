@@ -22,7 +22,7 @@ function MainApp() {
   return (
     <div className="relative min-h-screen bg-[#F8F6F0] text-[#24221E] font-sans overflow-x-hidden pb-16 sm:pb-0">
       {/* Authentic Paper Grain & Retro Dot Overlays */}
-      <div className="fixed inset-0 bg-retro-dots opacity-40 pointer-events-none z-0" />
+      <div className="fixed inset-0 bg-retro-dots opacity-20 pointer-events-none z-0" />
       <div className="fixed inset-0 paper-grain pointer-events-none z-0" />
 
       {/* Secret Editor Toolbar & Passcode Listener (Hidden from normal visitors) */}

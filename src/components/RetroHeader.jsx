@@ -61,7 +61,7 @@ export default function RetroHeader({ scrollProgress }) {
         <div className="flex items-center gap-2">
           <button
             onClick={handleCopyEmail}
-            className="flex items-center gap-1.5 px-3 py-1 bg-[#FDFCF7] border border-[#24221E] shadow-retro-sm hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none transition-all active:translate-x-[2px] active:translate-y-[2px]"
+            className="flex items-center gap-1.5 px-3 py-1 bg-white/70 border border-[#24221E]/20 shadow-xs hover:border-[#24221E]/40 hover:bg-[#EFECE2] transition-all rounded-xs active:translate-y-[1px]"
           >
             <Mail className="w-3 h-3 text-[#B93826]" />
             <span className="font-semibold text-[11px]">jonah.otoole@icloud.com</span>
@@ -70,7 +70,7 @@ export default function RetroHeader({ scrollProgress }) {
           <a
             href="./Jonah-OToole-Resume.pdf"
             download="Jonah-OToole-Resume.pdf"
-            className="flex items-center gap-1.5 px-3 py-1 bg-[#FDFCF7] border border-[#24221E] shadow-retro-sm hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none transition-all active:translate-x-[2px] active:translate-y-[2px]"
+            className="flex items-center gap-1.5 px-3 py-1 bg-white/70 border border-[#24221E]/20 shadow-xs hover:border-[#24221E]/40 hover:bg-[#EFECE2] transition-all rounded-xs active:translate-y-[1px]"
             title="Download Official Resume PDF"
           >
             <FileText className="w-3 h-3 text-[#1E4E79]" />
@@ -79,7 +79,7 @@ export default function RetroHeader({ scrollProgress }) {
 
           <a
             href="#contact"
-            className="flex items-center gap-1 px-3 py-1 bg-[#24221E] text-[#F8F6F0] font-semibold text-[11px] hover:bg-[#B93826] transition-colors"
+            className="flex items-center gap-1 px-3 py-1 bg-[#24221E] text-[#F8F6F0] font-semibold text-[11px] hover:bg-[#B93826] transition-colors rounded-xs shadow-xs"
           >
             <span>CONNECT</span>
             <ArrowUpRight className="w-3 h-3" />

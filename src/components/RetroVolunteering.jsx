@@ -9,7 +9,7 @@ export default function RetroVolunteering() {
   return (
     <section id="volunteering" className="py-20 sm:py-24 px-4 sm:px-8 max-w-5xl mx-auto">
       {/* Section Header */}
-      <div className="mb-8 pb-3 border-b-2 border-[#24221E]">
+      <div className="mb-8 pb-3 border-b border-[#24221E]/15">
         <div className="text-xs font-mono font-bold tracking-widest text-[#1E4E79] uppercase">
           [ 02 / VOLUNTEERING & PUBLIC LEADERSHIP ]
         </div>
@@ -26,14 +26,14 @@ export default function RetroVolunteering() {
         {volunteering.map((item, idx) => (
           <div
             key={item.id}
-            className="retro-paper p-6 retro-paper-hover flex flex-col justify-between"
+            className="retro-paper p-6 retro-paper-hover flex flex-col justify-between rounded-xs"
           >
             <div>
               {/* Header metadata */}
-              <div className="flex items-center justify-between gap-2 pb-2 border-b border-[#24221E]/15 font-mono text-xs">
+              <div className="flex items-center justify-between gap-2 pb-2 border-b border-[#24221E]/12 font-mono text-xs">
                 <span className="font-bold text-[#1E4E79]">{item.organization}</span>
                 {item.current ? (
-                  <span className="text-[10px] font-bold text-[#2A7B4C] bg-[#2A7B4C]/10 border border-[#2A7B4C] px-1.5 py-0.5">
+                  <span className="text-[10px] font-bold text-[#2A7B4C] bg-[#2A7B4C]/10 border border-[#2A7B4C]/30 px-1.5 py-0.5 rounded-xs">
                     ● CURRENT
                   </span>
                 ) : (
@@ -92,7 +92,7 @@ export default function RetroVolunteering() {
               {item.skills.map((skill, sIdx) => (
                 <span
                   key={sIdx}
-                  className="px-2 py-0.5 bg-[#F8F6F0] border border-[#24221E]/20 text-[#24221E]"
+                  className="px-2 py-0.5 bg-white/60 border border-[#24221E]/15 text-[#24221E] rounded-xs"
                 >
                   {skill}
                 </span>

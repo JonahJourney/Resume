@@ -22,7 +22,7 @@ export default function RetroExperience({ smoothVelocity }) {
   return (
     <section id="experience" className="py-20 sm:py-24 px-4 sm:px-8 max-w-5xl mx-auto">
       {/* Section Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b-2 border-[#24221E] gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b border-[#24221E]/15 gap-4">
         <div>
           <div className="text-xs font-mono font-bold tracking-widest text-[#B93826] uppercase">
             [ 01 / WORK EXPERIENCE ]
@@ -38,10 +38,10 @@ export default function RetroExperience({ smoothVelocity }) {
             <button
               key={cat.id}
               onClick={() => setFilter(cat.id)}
-              className={`px-3 py-1 border border-[#24221E] transition-all ${
+              className={`px-3 py-1 border transition-all rounded-xs ${
                 filter === cat.id
-                  ? 'bg-[#24221E] text-[#F8F6F0] font-bold shadow-retro-sm'
-                  : 'bg-[#FDFCF7] text-[#24221E] hover:bg-[#EFECE2]'
+                  ? 'bg-[#24221E] text-[#F8F6F0] font-bold border-[#24221E] shadow-xs'
+                  : 'bg-white/60 text-[#24221E] border-[#24221E]/20 hover:bg-[#EFECE2]'
               }`}
             >
               {cat.label}
@@ -57,12 +57,12 @@ export default function RetroExperience({ smoothVelocity }) {
           return (
             <div
               key={job.id}
-              className="retro-paper p-6 sm:p-7 retro-paper-hover relative group"
+              className="retro-paper p-6 sm:p-7 retro-paper-hover relative group rounded-xs"
             >
               {/* Top row: Dates & Type */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-[#24221E]/15 font-mono text-xs">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-[#24221E]/12 font-mono text-xs">
                 <div className="flex items-center gap-2">
-                  <span className="font-bold text-[#141311] bg-[#EFECE2] px-2.5 py-0.5 border border-[#24221E]/20">
+                  <span className="font-bold text-[#141311] bg-[#EFECE2] px-2.5 py-0.5 border border-[#24221E]/15 rounded-xs">
                     {job.period}
                   </span>
                   <span className="text-[#68645C]">•</span>
@@ -138,7 +138,7 @@ export default function RetroExperience({ smoothVelocity }) {
                 {job.skills.map((skill, sIdx) => (
                   <span
                     key={sIdx}
-                    className="px-2 py-0.5 bg-[#F8F6F0] border border-[#24221E]/30 text-[#24221E] font-medium"
+                    className="px-2 py-0.5 bg-white/60 border border-[#24221E]/15 text-[#24221E] font-medium rounded-xs"
                   >
                     #{skill}
                   </span>

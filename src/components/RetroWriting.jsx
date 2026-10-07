@@ -7,7 +7,7 @@ export default function RetroWriting() {
   return (
     <section id="writing" className="py-20 sm:py-24 px-4 sm:px-8 max-w-5xl mx-auto">
       {/* Section Header */}
-      <div className="mb-6 sm:mb-8 pb-3 border-b-2 border-[#24221E]">
+      <div className="mb-6 sm:mb-8 pb-3 border-b border-[#24221E]/15">
         <div className="text-xs font-mono font-bold tracking-widest text-[#1E4E79] uppercase">
           [ ESSAYS, RESEARCH & CULTURAL INQUIRY ]
         </div>
@@ -20,9 +20,9 @@ export default function RetroWriting() {
       </div>
 
       {/* Essay Card */}
-      <div className="retro-paper p-5 sm:p-8 retro-paper-hover space-y-5 relative">
+      <div className="retro-paper p-5 sm:p-8 retro-paper-hover space-y-5 relative rounded-xs">
         <div className="washi-tape washi-tape-blue -top-2.5 right-10 -rotate-2 hidden sm:block" />
-        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 pb-3 border-b border-[#24221E]/15">
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 pb-3 border-b border-[#24221E]/12">
           <div>
             <span className="rubber-stamp rubber-stamp-blue text-[10px] sm:text-[11px] mb-2">
               INDEPENDENT ESSAY & COMPARATIVE STUDY
@@ -48,7 +48,7 @@ export default function RetroWriting() {
 
         {/* 3 Pillars Summary Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs pt-1">
-          <div className="p-3 bg-[#F8F6F0] border border-[#24221E]/20">
+          <div className="p-3 bg-white/60 border border-[#24221E]/15 rounded-xs">
             <div className="font-bold text-[#B93826] text-[11px] uppercase mb-1">
               01 // The Automotive Paradigm
             </div>
@@ -57,7 +57,7 @@ export default function RetroWriting() {
             </p>
           </div>
 
-          <div className="p-3 bg-[#F8F6F0] border border-[#24221E]/20">
+          <div className="p-3 bg-white/60 border border-[#24221E]/15 rounded-xs">
             <div className="font-bold text-[#1E4E79] text-[11px] uppercase mb-1">
               02 // The Built Environment
             </div>
@@ -66,7 +66,7 @@ export default function RetroWriting() {
             </p>
           </div>
 
-          <div className="p-3 bg-[#F8F6F0] border border-[#24221E]/20">
+          <div className="p-3 bg-white/60 border border-[#24221E]/15 rounded-xs">
             <div className="font-bold text-[#2A7B4C] text-[11px] uppercase mb-1">
               03 // Infrastructure & Rail
             </div>

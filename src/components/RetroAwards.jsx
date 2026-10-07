@@ -34,7 +34,7 @@ export default function RetroAwards() {
   return (
     <section id="awards" className="py-20 sm:py-24 px-4 sm:px-8 max-w-5xl mx-auto">
       {/* Section Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b-2 border-[#24221E] gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3 border-b border-[#24221E]/15 gap-4">
         <div>
           <div className="text-xs font-mono font-bold tracking-widest text-[#B8860B] uppercase">
             [ 06 / CITATIONS, HONOURS & CREDENTIALS ]
@@ -46,7 +46,7 @@ export default function RetroAwards() {
 
         <button
           onClick={triggerConfetti}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#FDFCF7] border border-[#24221E] shadow-retro-sm hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-none transition-all font-mono text-xs font-bold no-print active:translate-x-[2px] active:translate-y-[2px]"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/60 border border-[#24221E]/20 shadow-xs hover:border-[#24221E]/40 transition-all font-mono text-xs font-bold no-print rounded-xs active:translate-y-[1px]"
         >
           <Sparkles className="w-3.5 h-3.5 text-[#B8860B]" />
           <span>STAMP CELEBRATION</span>
@@ -54,12 +54,12 @@ export default function RetroAwards() {
       </div>
 
       {/* Duke of Edinburgh Showcase */}
-      <div className="retro-paper p-6 sm:p-8 mb-8 relative">
+      <div className="retro-paper p-6 sm:p-8 mb-8 relative rounded-xs">
         {/* Brass Paperclip Accent */}
         <div className="brass-paperclip hidden sm:block" />
         <div className="washi-tape washi-tape-amber -top-2.5 right-8 rotate-1 hidden sm:block" />
 
-        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-[#24221E]/15">
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-[#24221E]/12">
           <div>
             <span className="rubber-stamp rubber-stamp-amber text-[10px] mb-2">
               TRIPLE CROWN RECIPIENT
@@ -89,9 +89,9 @@ export default function RetroAwards() {
           {awards.map((award) => (
             <div
               key={award.id}
-              className="p-4 bg-[#F8F6F0] border border-[#24221E] hover:bg-[#EFECE2] transition-colors"
+              className="p-4 bg-white/60 border border-[#24221E]/15 hover:bg-[#EFECE2] rounded-xs transition-colors"
             >
-              <div className="flex items-center justify-between text-xs pb-1 border-b border-[#24221E]/15">
+              <div className="flex items-center justify-between text-xs pb-1 border-b border-[#24221E]/10">
                 <span className="font-bold text-[#B8860B]">{award.level}</span>
                 <span className="text-[#68645C] text-[11px]">{award.date}</span>
               </div>
@@ -111,7 +111,7 @@ export default function RetroAwards() {
         {certifications.map((cert) => (
           <div
             key={cert.id}
-            className="retro-paper p-6 retro-paper-hover flex flex-col justify-between"
+            className="retro-paper p-6 retro-paper-hover flex flex-col justify-between rounded-xs"
           >
             <div>
               <div className="flex items-center justify-between pb-2 border-b border-[#24221E]/15 font-mono text-xs">

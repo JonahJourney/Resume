@@ -101,24 +101,24 @@ export default function RetroHero({ smoothVelocity }) {
             </p>
 
             {/* Outdoor Passions Pills */}
-            <div className="pt-4 mt-4 border-t border-[#24221E]/15">
+            <div className="pt-4 mt-4 border-t border-[#24221E]/12">
               <div className="text-xs font-mono font-bold uppercase text-[#68645C] mb-2.5">
                 // OUTDOOR DISCIPLINES & INTERESTS
               </div>
               <div className="flex flex-wrap gap-2 font-mono text-xs text-[#24221E]">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#F8F6F0] border border-[#24221E]/30">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/60 border border-[#24221E]/15 rounded-xs">
                   <Bike className="w-3.5 h-3.5 text-[#B93826]" />
                   <span>Biking</span>
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#F8F6F0] border border-[#24221E]/30">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/60 border border-[#24221E]/15 rounded-xs">
                   <Waves className="w-3.5 h-3.5 text-[#1E4E79]" />
                   <span>Paddle Boarding</span>
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#F8F6F0] border border-[#24221E]/30">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/60 border border-[#24221E]/15 rounded-xs">
                   <Snowflake className="w-3.5 h-3.5 text-[#2A7B4C]" />
                   <span>Snowshoeing</span>
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#F8F6F0] border border-[#24221E]/30">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/60 border border-[#24221E]/15 rounded-xs">
                   <Mountain className="w-3.5 h-3.5 text-[#B8860B]" />
                   <span>Alpine Hiking</span>
                 </span>
@@ -126,11 +126,11 @@ export default function RetroHero({ smoothVelocity }) {
             </div>
 
             {/* Contact Strip & Download Resume */}
-            <div className="space-y-3 pt-6 mt-6 border-t border-[#24221E]/15 font-mono text-xs">
+            <div className="space-y-3 pt-6 mt-6 border-t border-[#24221E]/12 font-mono text-xs">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <button
                   onClick={() => handleCopy(personal.email, 'Email')}
-                  className="flex items-center justify-between p-2.5 bg-[#F8F6F0] border border-[#24221E]/30 hover:border-[#24221E] hover:bg-[#EFECE2] transition-colors text-left group"
+                  className="flex items-center justify-between p-2.5 bg-white/60 border border-[#24221E]/15 hover:border-[#24221E]/40 hover:bg-[#EFECE2] transition-all text-left group rounded-xs"
                 >
                   <div className="truncate">
                     <div className="text-[10px] text-[#68645C] font-semibold uppercase">Email:</div>
@@ -141,7 +141,7 @@ export default function RetroHero({ smoothVelocity }) {
 
                 <button
                   onClick={() => handleCopy(personal.phone, 'Phone')}
-                  className="flex items-center justify-between p-2.5 bg-[#F8F6F0] border border-[#24221E]/30 hover:border-[#24221E] hover:bg-[#EFECE2] transition-colors text-left group"
+                  className="flex items-center justify-between p-2.5 bg-white/60 border border-[#24221E]/15 hover:border-[#24221E]/40 hover:bg-[#EFECE2] transition-all text-left group rounded-xs"
                 >
                   <div>
                     <div className="text-[10px] text-[#68645C] font-semibold uppercase">Phone:</div>
@@ -150,7 +150,7 @@ export default function RetroHero({ smoothVelocity }) {
                   <Copy className="w-3.5 h-3.5 text-[#68645C] group-hover:text-[#24221E] flex-shrink-0 ml-1" />
                 </button>
 
-                <div className="p-2.5 bg-[#F8F6F0] border border-[#24221E]/30">
+                <div className="p-2.5 bg-white/60 border border-[#24221E]/15 rounded-xs">
                   <div className="text-[10px] text-[#68645C] font-semibold uppercase">Location:</div>
                   <div className="font-bold text-[#141311]">{personal.location}</div>
                 </div>
@@ -161,7 +161,7 @@ export default function RetroHero({ smoothVelocity }) {
                 <a
                   href="./Jonah-OToole-Resume.pdf"
                   download="Jonah-OToole-Resume.pdf"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#24221E] text-[#F8F6F0] hover:bg-[#B93826] font-bold text-xs shadow-retro-sm transition-all active:translate-x-[1px] active:translate-y-[1px]"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#24221E] text-[#F8F6F0] hover:bg-[#B93826] font-bold text-xs shadow-sm hover:shadow-md transition-all rounded-xs active:translate-x-[1px] active:translate-y-[1px]"
                 >
                   <span>DOWNLOAD ORIGINAL RESUME (PDF) 📄</span>
                 </a>
@@ -185,7 +185,7 @@ export default function RetroHero({ smoothVelocity }) {
           {stats.map((stat, idx) => (
             <div
               key={idx}
-              className="p-4 bg-[#FDFCF7] border border-[#24221E] shadow-retro-sm transition-transform hover:-translate-y-1"
+              className="p-4 bg-white/70 border border-[#24221E]/15 rounded-xs shadow-xs transition-all hover:-translate-y-0.5 hover:border-[#24221E]/35 hover:shadow-sm"
             >
               <div className="text-2xl sm:text-3xl font-bold text-[#141311]">
                 {stat.value}

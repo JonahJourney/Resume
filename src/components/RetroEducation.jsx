@@ -9,7 +9,7 @@ export default function RetroEducation() {
   return (
     <section id="education" className="py-20 sm:py-24 px-4 sm:px-8 max-w-5xl mx-auto">
       {/* Section Header */}
-      <div className="mb-8 pb-3 border-b-2 border-[#24221E]">
+      <div className="mb-8 pb-3 border-b border-[#24221E]/15">
         <div className="text-xs font-mono font-bold tracking-widest text-[#2A7B4C] uppercase">
           [ 03 / ACADEMIC BACKGROUND & CURRICULA ]
         </div>
@@ -22,11 +22,11 @@ export default function RetroEducation() {
         {education.map((edu, idx) => (
           <div
             key={edu.id}
-            className="retro-paper p-6 sm:p-7 retro-paper-hover flex flex-col justify-between"
+            className="retro-paper p-6 sm:p-7 retro-paper-hover flex flex-col justify-between rounded-xs"
           >
             <div>
               {/* Header */}
-              <div className="flex items-center justify-between pb-2 border-b border-[#24221E]/15 font-mono text-xs">
+              <div className="flex items-center justify-between pb-2 border-b border-[#24221E]/12 font-mono text-xs">
                 <span className="text-[#68645C]">{edu.period}</span>
                 <span className="font-bold text-[#2A7B4C] uppercase">
                   {edu.status}

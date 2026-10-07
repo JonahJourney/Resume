@@ -33,7 +33,7 @@ export default function RetroContact() {
   return (
     <section id="contact" className="py-20 sm:py-24 px-4 sm:px-8 max-w-5xl mx-auto">
       {/* Section Header */}
-      <div className="mb-8 pb-3 border-b-2 border-[#24221E]">
+      <div className="mb-8 pb-3 border-b border-[#24221E]/15">
         <div className="text-xs font-mono font-bold tracking-widest text-[#B93826] uppercase">
           [ 07 / CORRESPONDENCE & TRANSMISSION ]
         </div>
@@ -47,16 +47,16 @@ export default function RetroContact() {
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
         {/* Contact Info */}
-        <div className="md:col-span-5 retro-paper p-6 sm:p-7 space-y-6 flex flex-col justify-between">
+        <div className="md:col-span-5 retro-paper p-6 sm:p-7 space-y-6 flex flex-col justify-between rounded-xs">
           <div className="space-y-4">
-            <div className="text-xs font-mono font-bold uppercase text-[#68645C] pb-2 border-b border-[#24221E]/15">
+            <div className="text-xs font-mono font-bold uppercase text-[#68645C] pb-2 border-b border-[#24221E]/12">
               // DIRECT CHANNELS
             </div>
 
             {/* Email */}
             <div
               onClick={() => handleCopy(personal.email, 'Email')}
-              className="p-3 bg-[#F8F6F0] border border-[#24221E] hover:bg-[#EFECE2] cursor-pointer transition-colors group"
+              className="p-3 bg-white/60 border border-[#24221E]/15 hover:border-[#24221E]/40 hover:bg-[#EFECE2] cursor-pointer transition-all group rounded-xs"
             >
               <div className="flex items-center justify-between font-mono text-xs">
                 <span className="text-[10px] text-[#68645C] uppercase font-bold">EMAIL:</span>
@@ -70,7 +70,7 @@ export default function RetroContact() {
             {/* Phone */}
             <div
               onClick={() => handleCopy(personal.phone, 'Phone number')}
-              className="p-3 bg-[#F8F6F0] border border-[#24221E] hover:bg-[#EFECE2] cursor-pointer transition-colors group"
+              className="p-3 bg-white/60 border border-[#24221E]/15 hover:border-[#24221E]/40 hover:bg-[#EFECE2] cursor-pointer transition-all group rounded-xs"
             >
               <div className="flex items-center justify-between font-mono text-xs">
                 <span className="text-[10px] text-[#68645C] uppercase font-bold">MOBILE:</span>
@@ -82,7 +82,7 @@ export default function RetroContact() {
             </div>
 
             {/* Location */}
-            <div className="p-3 bg-[#F8F6F0] border border-[#24221E]">
+            <div className="p-3 bg-white/60 border border-[#24221E]/15 rounded-xs">
               <div className="font-mono text-[10px] text-[#68645C] uppercase font-bold">
                 HOME BASE:
               </div>
@@ -92,15 +92,15 @@ export default function RetroContact() {
             </div>
           </div>
 
-          <div className="p-3 border border-dashed border-[#1E4E79] text-[#1E4E79] font-mono text-xs">
+          <div className="p-3 bg-white/60 border border-dashed border-[#1E4E79]/30 text-[#1E4E79] font-mono text-xs rounded-xs">
             <span className="font-bold">ELIGIBILITY:</span> Canadian citizen resident in Belgium with active EU student status.
           </div>
         </div>
 
         {/* Transmission Form */}
-        <div className="md:col-span-7 retro-paper p-6 sm:p-7">
+        <div className="md:col-span-7 retro-paper p-6 sm:p-7 rounded-xs">
           <form onSubmit={handleSendMail} className="space-y-4">
-            <div className="text-xs font-mono font-bold uppercase text-[#68645C] pb-2 border-b border-[#24221E]/15">
+            <div className="text-xs font-mono font-bold uppercase text-[#68645C] pb-2 border-b border-[#24221E]/12">
               // DISPATCH MESSAGE DRAFT
             </div>
 
@@ -117,10 +117,10 @@ export default function RetroContact() {
                     key={t}
                     type="button"
                     onClick={() => setTopic(t)}
-                    className={`px-2.5 py-1 border border-[#24221E] text-xs transition-all ${
+                    className={`px-2.5 py-1 border text-xs transition-all rounded-xs ${
                       topic === t
-                        ? 'bg-[#24221E] text-[#F8F6F0] font-bold'
-                        : 'bg-[#FDFCF7] text-[#24221E] hover:bg-[#EFECE2]'
+                        ? 'bg-[#24221E] text-[#F8F6F0] font-bold border-[#24221E]'
+                        : 'bg-white/60 text-[#24221E] border-[#24221E]/20 hover:bg-[#EFECE2]'
                     }`}
                   >
                     {t}
@@ -136,7 +136,7 @@ export default function RetroContact() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="e.g. Alex (Engineering Recruiter)"
-                className="w-full px-3 py-2 bg-[#F8F6F0] border border-[#24221E] text-xs text-[#24221E] placeholder-[#9E998E] focus:outline-none focus:bg-[#FFF]"
+                className="w-full px-3 py-2 bg-white/70 border border-[#24221E]/20 text-xs text-[#24221E] placeholder-[#9E998E] focus:outline-none focus:bg-[#FFF] focus:border-[#24221E] rounded-xs"
               />
             </div>
 
@@ -147,13 +147,13 @@ export default function RetroContact() {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Hi Jonah, saw your portfolio and would like to talk about..."
-                className="w-full px-3 py-2 bg-[#F8F6F0] border border-[#24221E] text-xs text-[#24221E] placeholder-[#9E998E] focus:outline-none focus:bg-[#FFF] resize-none font-sans"
+                className="w-full px-3 py-2 bg-white/70 border border-[#24221E]/20 text-xs text-[#24221E] placeholder-[#9E998E] focus:outline-none focus:bg-[#FFF] focus:border-[#24221E] resize-none font-sans rounded-xs"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full py-3 bg-[#24221E] text-[#F8F6F0] font-mono text-xs font-bold tracking-wider hover:bg-[#B93826] transition-colors border border-[#24221E] shadow-retro-sm active:translate-x-[2px] active:translate-y-[2px]"
+              className="w-full py-3 bg-[#24221E] text-[#F8F6F0] font-mono text-xs font-bold tracking-wider hover:bg-[#B93826] transition-colors border border-[#24221E] shadow-sm rounded-xs active:translate-y-[1px]"
             >
               TRANSMIT DRAFT TO JONAH.OTOOLE@ICLOUD.COM →
             </button>
@@ -162,7 +162,7 @@ export default function RetroContact() {
       </div>
 
       {/* Colophon Footer */}
-      <footer className="mt-16 pt-6 border-t-2 border-[#24221E] flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-xs text-[#68645C]">
+      <footer className="mt-16 pt-6 border-t border-[#24221E]/15 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-xs text-[#68645C]">
         <div>
           © {new Date().getFullYear()} Jonah O'Toole • Typed in Leuven, Belgium.
         </div>
