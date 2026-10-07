@@ -1,29 +1,23 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Copy, ArrowUp, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Copy, ArrowUp, ArrowUpRight, Check, FileText, Send, Sparkles } from 'lucide-react';
 import { resumeData } from '../data/resumeData';
 import { useToast } from './Toast';
 
 export default function RetroContact() {
   const { personal } = resumeData;
   const { addToast } = useToast();
+  const [copied, setCopied] = useState(false);
 
-  const [topic, setTopic] = useState('Software Engineering Opportunity');
-  const [name, setName] = useState('');
-  const [message, setMessage] = useState('');
-
-  const handleCopy = (text, label) => {
-    navigator.clipboard.writeText(text);
-    addToast(`Copied ${label}: ${text}`);
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(personal.email);
+    setCopied(true);
+    addToast(`Copied email to clipboard: ${personal.email}`);
+    setTimeout(() => setCopied(false), 2500);
   };
 
-  const handleSendMail = (e) => {
-    e.preventDefault();
-    const subject = encodeURIComponent(`[Jonah O'Toole Portfolio] ${topic}${name ? ` - ${name}` : ''}`);
-    const body = encodeURIComponent(
-      `Hello Jonah,\n\n${message || 'I reviewed your portfolio and resume record and would like to get in touch.'}\n\nFrom,\n${name || 'A Recruiter / Collaborator'}`
-    );
-    window.location.href = `mailto:${personal.email}?subject=${subject}&body=${body}`;
-    addToast('Opening mail client...');
+  const handleCopyPhone = () => {
+    navigator.clipboard.writeText(personal.phone);
+    addToast(`Copied phone to clipboard: ${personal.phone}`);
   };
 
   const scrollToTop = () => {
@@ -31,11 +25,11 @@ export default function RetroContact() {
   };
 
   return (
-    <section id="contact" className="py-20 sm:py-24 px-4 sm:px-8 max-w-5xl mx-auto">
+    <section id="contact" className="py-20 sm:py-24 px-4 sm:px-8 max-w-4xl mx-auto">
       {/* Section Header */}
       <div className="mb-8 pb-3 border-b border-[#24221E]/15">
         <div className="text-xs font-mono font-bold tracking-widest text-[#B93826] uppercase">
-          [ 07 / CORRESPONDENCE & TRANSMISSION ]
+          [ 07 / CORRESPONDENCE & CONTACT ]
         </div>
         <h2 className="text-3xl sm:text-4xl font-serif text-[#141311] tracking-tight mt-1">
           Get in Touch
@@ -45,119 +39,112 @@ export default function RetroContact() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-        {/* Contact Info */}
-        <div className="md:col-span-5 retro-paper p-6 sm:p-7 space-y-6 flex flex-col justify-between rounded-xs">
-          <div className="space-y-4">
-            <div className="text-xs font-mono font-bold uppercase text-[#68645C] pb-2 border-b border-[#24221E]/12">
-              // DIRECT CHANNELS
-            </div>
+      {/* Clean Minimal Contact Card */}
+      <div className="retro-paper p-6 sm:p-10 rounded-xs space-y-8 relative">
+        <div className="washi-tape washi-tape-amber -top-2.5 right-10 rotate-1 hidden sm:block" />
 
-            {/* Email */}
-            <div
-              onClick={() => handleCopy(personal.email, 'Email')}
-              className="p-3 bg-white/60 border border-[#24221E]/15 hover:border-[#24221E]/40 hover:bg-[#EFECE2] cursor-pointer transition-all group rounded-xs"
+        {/* Big Email Hero Box */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 border-b border-[#24221E]/12">
+          <div className="space-y-1">
+            <div className="text-xs font-mono uppercase font-bold text-[#68645C]">
+              DIRECT EMAIL ADDRESS
+            </div>
+            <a
+              href={`mailto:${personal.email}`}
+              className="text-2xl sm:text-3xl font-serif font-bold text-[#141311] hover:text-[#B93826] transition-colors inline-block"
             >
-              <div className="flex items-center justify-between font-mono text-xs">
-                <span className="text-[10px] text-[#68645C] uppercase font-bold">EMAIL:</span>
-                <Copy className="w-3.5 h-3.5 text-[#68645C] group-hover:text-[#24221E]" />
-              </div>
-              <div className="font-bold text-[#141311] text-sm mt-1 truncate">
-                {personal.email}
-              </div>
-            </div>
-
-            {/* Phone */}
-            <div
-              onClick={() => handleCopy(personal.phone, 'Phone number')}
-              className="p-3 bg-white/60 border border-[#24221E]/15 hover:border-[#24221E]/40 hover:bg-[#EFECE2] cursor-pointer transition-all group rounded-xs"
-            >
-              <div className="flex items-center justify-between font-mono text-xs">
-                <span className="text-[10px] text-[#68645C] uppercase font-bold">MOBILE:</span>
-                <Copy className="w-3.5 h-3.5 text-[#68645C] group-hover:text-[#24221E]" />
-              </div>
-              <div className="font-bold text-[#141311] text-sm mt-1">
-                {personal.phone}
-              </div>
-            </div>
-
-            {/* Location */}
-            <div className="p-3 bg-white/60 border border-[#24221E]/15 rounded-xs">
-              <div className="font-mono text-[10px] text-[#68645C] uppercase font-bold">
-                HOME BASE:
-              </div>
-              <div className="font-bold text-[#141311] text-sm mt-1 font-mono">
-                Leuven, Belgium (UCLL)
-              </div>
+              {personal.email}
+            </a>
+            <div className="text-xs font-mono text-[#68645C]">
+              Replies typically within 24 hours.
             </div>
           </div>
 
-          <div className="p-3 bg-white/60 border border-dashed border-[#1E4E79]/30 text-[#1E4E79] font-mono text-xs rounded-xs">
-            <span className="font-bold">ELIGIBILITY:</span> Canadian citizen resident in Belgium with active EU student status.
+          {/* Action Buttons */}
+          <div className="flex flex-wrap sm:flex-nowrap items-center gap-2.5 font-mono text-xs">
+            <a
+              href={`mailto:${personal.email}?subject=Hello%20Jonah%20%E2%80%94%20Software%20Engineering%20Inquiry`}
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-[#24221E] text-[#F8F6F0] font-bold hover:bg-[#B93826] transition-all rounded-xs shadow-xs hover:shadow-sm flex-1 sm:flex-initial active:translate-y-[1px]"
+            >
+              <Mail className="w-4 h-4 text-[#F8F6F0]" />
+              <span>SEND EMAIL</span>
+            </a>
+
+            <button
+              onClick={handleCopyEmail}
+              className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-white/70 border border-[#24221E]/20 text-[#24221E] font-bold hover:bg-[#EFECE2] hover:border-[#24221E]/40 transition-all rounded-xs shadow-xs flex-1 sm:flex-initial active:translate-y-[1px]"
+              title="Copy email to clipboard"
+            >
+              {copied ? (
+                <>
+                  <Check className="w-4 h-4 text-[#2A7B4C]" />
+                  <span className="text-[#2A7B4C]">COPIED!</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="w-4 h-4 text-[#68645C]" />
+                  <span>COPY</span>
+                </>
+              )}
+            </button>
           </div>
         </div>
 
-        {/* Transmission Form */}
-        <div className="md:col-span-7 retro-paper p-6 sm:p-7 rounded-xs">
-          <form onSubmit={handleSendMail} className="space-y-4">
-            <div className="text-xs font-mono font-bold uppercase text-[#68645C] pb-2 border-b border-[#24221E]/12">
-              // DISPATCH MESSAGE DRAFT
+        {/* Secondary Details Matrix */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-xs">
+          {/* Phone */}
+          <div
+            onClick={handleCopyPhone}
+            className="p-4 bg-white/60 border border-[#24221E]/15 hover:border-[#24221E]/35 hover:bg-[#EFECE2] cursor-pointer transition-all rounded-xs group"
+          >
+            <div className="flex items-center justify-between text-[#68645C] text-[10px] font-bold uppercase mb-1">
+              <span>PHONE / WHATSAPP</span>
+              <Copy className="w-3.5 h-3.5 group-hover:text-[#24221E]" />
             </div>
-
-            <div className="space-y-1 font-mono text-xs">
-              <label className="font-bold text-[#24221E] uppercase">Inquiry Topic</label>
-              <div className="flex flex-wrap gap-1.5">
-                {[
-                  'Software Internship',
-                  'Web Development',
-                  'ESN Collaboration',
-                  'General Inquiry',
-                ].map((t) => (
-                  <button
-                    key={t}
-                    type="button"
-                    onClick={() => setTopic(t)}
-                    className={`px-2.5 py-1 border text-xs transition-all rounded-xs ${
-                      topic === t
-                        ? 'bg-[#24221E] text-[#F8F6F0] font-bold border-[#24221E]'
-                        : 'bg-white/60 text-[#24221E] border-[#24221E]/20 hover:bg-[#EFECE2]'
-                    }`}
-                  >
-                    {t}
-                  </button>
-                ))}
-              </div>
+            <div className="font-bold text-sm text-[#141311]">
+              {personal.phone}
             </div>
+            <div className="text-[10px] text-[#68645C] mt-0.5">Click to copy number</div>
+          </div>
 
-            <div className="space-y-1 font-mono text-xs">
-              <label className="font-bold text-[#24221E] uppercase">Your Name & Org</label>
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="e.g. Alex (Engineering Recruiter)"
-                className="w-full px-3 py-2 bg-white/70 border border-[#24221E]/20 text-xs text-[#24221E] placeholder-[#9E998E] focus:outline-none focus:bg-[#FFF] focus:border-[#24221E] rounded-xs"
-              />
+          {/* Location */}
+          <div className="p-4 bg-white/60 border border-[#24221E]/15 rounded-xs">
+            <div className="text-[#68645C] text-[10px] font-bold uppercase mb-1">
+              LOCATION & CAMPUS
             </div>
-
-            <div className="space-y-1 font-mono text-xs">
-              <label className="font-bold text-[#24221E] uppercase">Message Note</label>
-              <textarea
-                rows={3}
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                placeholder="Hi Jonah, saw your portfolio and would like to talk about..."
-                className="w-full px-3 py-2 bg-white/70 border border-[#24221E]/20 text-xs text-[#24221E] placeholder-[#9E998E] focus:outline-none focus:bg-[#FFF] focus:border-[#24221E] resize-none font-sans rounded-xs"
-              />
+            <div className="font-bold text-sm text-[#141311]">
+              Leuven, Belgium
             </div>
+            <div className="text-[10px] text-[#68645C] mt-0.5">UCLL Applied Computer Science</div>
+          </div>
 
-            <button
-              type="submit"
-              className="w-full py-3 bg-[#24221E] text-[#F8F6F0] font-mono text-xs font-bold tracking-wider hover:bg-[#B93826] transition-colors border border-[#24221E] shadow-sm rounded-xs active:translate-y-[1px]"
-            >
-              TRANSMIT DRAFT TO JONAH.OTOOLE@ICLOUD.COM →
-            </button>
-          </form>
+          {/* Status & Work Eligibility */}
+          <div className="p-4 bg-white/60 border border-[#24221E]/15 rounded-xs">
+            <div className="text-[#68645C] text-[10px] font-bold uppercase mb-1">
+              STATUS & CITIZENSHIP
+            </div>
+            <div className="font-bold text-sm text-[#141311]">
+              🇨🇦 Canadian Citizen
+            </div>
+            <div className="text-[10px] text-[#2A7B4C] font-semibold mt-0.5">Active EU Student Status</div>
+          </div>
+        </div>
+
+        {/* Quick Document Download Bar */}
+        <div className="pt-4 border-t border-[#24221E]/12 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-xs">
+          <div className="flex items-center gap-2 text-[#68645C]">
+            <FileText className="w-4 h-4 text-[#1E4E79]" />
+            <span>Need an offline copy of my curriculum vitae?</span>
+          </div>
+
+          <a
+            href="./Jonah-OToole-Resume.pdf"
+            download="Jonah-OToole-Resume.pdf"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white/80 border border-[#24221E]/20 text-[#24221E] font-bold hover:bg-[#24221E] hover:text-[#F8F6F0] transition-all rounded-xs shadow-xs"
+          >
+            <span>DOWNLOAD RESUME (PDF)</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </a>
         </div>
       </div>
 
@@ -178,3 +165,4 @@ export default function RetroContact() {
     </section>
   );
 }
+
