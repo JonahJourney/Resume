@@ -40,16 +40,16 @@ export default function RetroHeader({ scrollProgress }) {
         />
       </div>
 
-      <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono">
+      <div className="max-w-5xl mx-auto flex items-center justify-between gap-2 text-xs font-mono">
         {/* Left: Document reference stamp with secret triple-click */}
         <div
           onClick={handleFolioTripleClick}
-          className="flex items-center gap-3 text-[#68645C] cursor-default"
+          className="flex items-center gap-2 sm:gap-3 text-[#68645C] cursor-default flex-shrink-0"
           title="Curriculum Vitae"
         >
-          <span className="font-bold text-[#24221E] flex items-center gap-1.5">
+          <span className="font-bold text-[#24221E] flex items-center gap-1.5 text-[11px] sm:text-xs">
             <span className="w-2 h-2 rounded-full bg-[#2A7B4C] inline-block" />
-            FOLIO / JO—2026
+            FOLIO<span className="hidden sm:inline"> / JO—2026</span>
           </span>
           <span className="hidden md:inline">•</span>
           <span className="hidden md:inline">APPLIED CS @ UCLL</span>
@@ -57,32 +57,35 @@ export default function RetroHeader({ scrollProgress }) {
           <span className="hidden lg:inline">LEUVEN, BE / CANADA</span>
         </div>
 
-        {/* Right: Tactile Quick Actions */}
-        <div className="flex items-center gap-2">
+        {/* Right: Tactile Quick Actions - Responsive & compact on mobile */}
+        <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
           <button
             onClick={handleCopyEmail}
-            className="flex items-center gap-1.5 px-3 py-1 bg-white/70 border border-[#24221E]/20 shadow-xs hover:border-[#24221E]/40 hover:bg-[#EFECE2] transition-all rounded-xs active:translate-y-[1px]"
+            className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 bg-white/70 border border-[#24221E]/20 shadow-xs hover:border-[#24221E]/40 hover:bg-[#EFECE2] transition-all rounded-xs active:translate-y-[1px]"
+            title="Copy jonah.otoole@icloud.com"
           >
-            <Mail className="w-3 h-3 text-[#B93826]" />
-            <span className="font-semibold text-[11px]">jonah.otoole@icloud.com</span>
+            <Mail className="w-3 h-3 text-[#B93826] flex-shrink-0" />
+            <span className="font-semibold text-[10px] sm:text-[11px] sm:hidden">Email</span>
+            <span className="font-semibold text-[11px] hidden sm:inline">jonah.otoole@icloud.com</span>
           </button>
 
           <a
             href="./Jonah-OToole-Resume.pdf"
             download="Jonah-OToole-Resume.pdf"
-            className="flex items-center gap-1.5 px-3 py-1 bg-white/70 border border-[#24221E]/20 shadow-xs hover:border-[#24221E]/40 hover:bg-[#EFECE2] transition-all rounded-xs active:translate-y-[1px]"
+            className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 bg-white/70 border border-[#24221E]/20 shadow-xs hover:border-[#24221E]/40 hover:bg-[#EFECE2] transition-all rounded-xs active:translate-y-[1px]"
             title="Download Official Resume PDF"
           >
-            <FileText className="w-3 h-3 text-[#1E4E79]" />
-            <span className="font-semibold text-[11px]">DOWNLOAD RESUME [PDF]</span>
+            <FileText className="w-3 h-3 text-[#1E4E79] flex-shrink-0" />
+            <span className="font-semibold text-[10px] sm:text-[11px] sm:hidden">CV (PDF)</span>
+            <span className="font-semibold text-[11px] hidden sm:inline">DOWNLOAD RESUME [PDF]</span>
           </a>
 
           <a
             href="#contact"
-            className="flex items-center gap-1 px-3 py-1 bg-[#24221E] text-[#F8F6F0] font-semibold text-[11px] hover:bg-[#B93826] transition-colors rounded-xs shadow-xs"
+            className="flex items-center gap-1 px-2.5 sm:px-3 py-1 bg-[#24221E] text-[#F8F6F0] font-semibold text-[10px] sm:text-[11px] hover:bg-[#B93826] transition-colors rounded-xs shadow-xs"
           >
             <span>CONNECT</span>
-            <ArrowUpRight className="w-3 h-3" />
+            <ArrowUpRight className="w-3 h-3 flex-shrink-0" />
           </a>
         </div>
       </div>

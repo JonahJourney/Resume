@@ -74,15 +74,15 @@ export default function KoalaScrollCompanion() {
   };
 
   return (
-    <div className="absolute right-0 sm:right-6 md:right-8 top-0 bottom-0 z-30 select-none no-print pointer-events-none w-10 sm:w-14">
+    <div className="absolute right-0 top-0 bottom-0 z-30 select-none no-print pointer-events-none w-8 sm:w-14 sm:right-6 md:right-8">
       {/* Continuous Bamboo Stalk running down the entire page length */}
-      <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-2.5 sm:w-3.5 bg-[#5A8F4C] border-x-2 border-[#24221E] shadow-sm flex flex-col justify-between py-12">
+      <div className="absolute top-0 bottom-0 right-2 sm:left-1/2 sm:-translate-x-1/2 w-2.5 sm:w-3.5 bg-[#5A8F4C] border-x-2 border-[#24221E] shadow-sm flex flex-col justify-between py-12">
         {[...Array(40)].map((_, i) => (
           <div key={i} className="relative w-full h-1 bg-[#3E6B32] border-y border-[#24221E]">
             {i % 2 === 0 ? (
-              <div className="absolute -left-2.5 sm:-left-3 -top-1.5 sm:-top-2 w-2.5 sm:w-3.5 h-1.5 bg-[#6EA358] border border-[#24221E] rounded-full -rotate-45" />
+              <div className="absolute -left-2 sm:-left-3 -top-1.5 sm:-top-2 w-2.5 sm:w-3.5 h-1.5 bg-[#6EA358] border border-[#24221E] rounded-full -rotate-45" />
             ) : (
-              <div className="absolute -right-2.5 sm:-right-3 -top-1.5 sm:-top-2 w-2.5 sm:w-3.5 h-1.5 bg-[#6EA358] border border-[#24221E] rounded-full rotate-45" />
+              <div className="absolute -right-2 sm:-right-3 -top-1.5 sm:-top-2 w-2.5 sm:w-3.5 h-1.5 bg-[#6EA358] border border-[#24221E] rounded-full rotate-45" />
             )}
           </div>
         ))}
@@ -92,13 +92,13 @@ export default function KoalaScrollCompanion() {
       {koalas.map((k) => (
         <div
           key={k.id}
-          className="absolute left-1/2 -translate-x-1/2 pointer-events-auto group cursor-pointer"
+          className="absolute right-0 sm:left-1/2 sm:-translate-x-1/2 pointer-events-auto group cursor-pointer"
           style={{ top: k.topOffset }}
           onClick={(e) => handleKoalaClick(k, e)}
         >
           {/* Speech Bubble on Hover or Click */}
           <div
-            className={`absolute right-11 sm:right-16 top-1/2 -translate-y-1/2 w-56 sm:w-64 max-w-[calc(100vw-3.2rem)] p-3 sm:p-3.5 bg-[#FDFCF7] border-2 border-[#24221E] shadow-retro text-xs font-mono rounded-xs z-50 transition-all duration-200 ${
+            className={`absolute right-10 sm:right-16 top-1/2 -translate-y-1/2 w-56 sm:w-64 max-w-[calc(100vw-2.5rem)] p-3 sm:p-3.5 bg-[#FDFCF7] border-2 border-[#24221E] shadow-retro text-xs font-mono rounded-xs z-50 transition-all duration-200 ${
               activeKoala === k.id
                 ? 'opacity-100 scale-100 pointer-events-auto'
                 : 'opacity-0 scale-95 pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto'
